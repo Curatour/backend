@@ -3,6 +3,8 @@ class CreateOrganizations < ActiveRecord::Migration[5.2]
     create_table :organizations do |t|
       t.string :name
       t.references :user_id, foreign_key: true
+
+      t.timestamps
     end
   end
 end
