@@ -44,6 +44,7 @@ group :test do
   gem "awesome_print", :require => "ap"
   gem "hirb"
   gem 'factory_bot_rails'
+  gem 'rake'
 end
 
 group :development do
