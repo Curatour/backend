@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.5.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.4', '>= 5.2.4.4'
+gem 'rails', '~> 5.2.5', '>= 5.2.5'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
@@ -30,7 +30,12 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
   gem 'pry'
-  gem 'rspec-rails'
+  gem 'figaro'
+  gem 'travis'
+  gem 'rspec-rails', '~> 4.0.2'
+end
+
+group :test do
   gem 'capybara'
   gem 'launchy'
   gem 'simplecov'
@@ -39,6 +44,7 @@ group :development, :test do
   gem "awesome_print", :require => "ap"
   gem "hirb"
   gem 'factory_bot_rails'
+  gem 'rake'
 end
 
 group :development do
