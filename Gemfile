@@ -30,6 +30,11 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
   gem 'pry'
+  gem 'figaro'
+  gem 'travis'
+end
+
+group :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'launchy'
@@ -39,8 +44,6 @@ group :development, :test do
   gem "awesome_print", :require => "ap"
   gem "hirb"
   gem 'factory_bot_rails'
-  gem 'figaro'
-  gem 'travis'
 end
 
 group :development do
