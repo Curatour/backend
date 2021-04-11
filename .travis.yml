@@ -4,7 +4,7 @@ rbenv:
 addons:
   postgresql: 9.6
 script:
-- RAILS_ENV=test bundle exec rake db:test:prepare --trace
+- bundle exec rails db:{create,migrate} RAILS_ENV=test
 - bundle exec rspec
 deploy:
   provider: heroku
@@ -13,4 +13,5 @@ deploy:
   app: curatour-be
   on:
     repo: Curatour/backend
+  cleanup: 'false'
   run: rails db:migrate
