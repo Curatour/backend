@@ -40,6 +40,7 @@ group :development, :test do
   gem "hirb"
   gem 'factory_bot_rails'
   gem 'figaro'
+  gem 'travis'
 end
 
 group :development do
