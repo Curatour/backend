@@ -32,10 +32,10 @@ group :development, :test do
   gem 'pry'
   gem 'figaro'
   gem 'travis'
+  gem 'rspec-rails', '~> 4.0.2'
 end
 
 group :test do
-  gem 'rspec-rails'
   gem 'capybara'
   gem 'launchy'
   gem 'simplecov'
