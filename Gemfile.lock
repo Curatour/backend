@@ -200,7 +200,7 @@ DEPENDENCIES
   pg (>= 0.18, < 2.0)
   pry
   puma (~> 3.11)
-  rails (~> 5.2.4, >= 5.2.4.4)
+  rails (~> 5.2.5, >= 5.2.5)
   rspec-rails
   shoulda-matchers
   simplecov
