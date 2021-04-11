@@ -1,0 +1,16 @@
+language: ruby
+rbenv:
+- 2.5.3
+addons:
+  postgresql: 9.6
+script:
+- RAILS_ENV=test bundle exec rake db:test:prepare --trace
+- bundle exec rspec
+deploy:
+  provider: heroku
+  api_key:
+    secure: 1st7ZIl23fwxiM36SQXqcfABeEqP3iCKH+DzijOdCKaRS+aVRjgMdZtc6OTZSJYdWP+bKBD5ThbZnbGZlRRhbn+keLKiH9/mWPkf+VxxpCRbBsqkqP5L2aimfGvj5j8zk+2ii9KX2UB4L4ATCYpNl9Qkna+KTp3Yl4vnkfwiiDO8fBrzsB0jY5rEq2AnBMmx7pcq3UT3Bo2apHhg8lyhjapqh1ORtz3GtarM3FxRXVVwizZwsu/gsbWtrZ+fylQ8F/efKdM3gAJBgrFrghIrA0ZnKAZORSJMr2DddqonIibvyxm6vkyMgJhyXjhSC3IORK7Yde8NOMESu4D7OtkjmPZMDHc+8kkVNLmwExfBxYqQgEx4jQVfmilU375Rl2u5g+xefzf0AaI5klgmWMKh6sDHEIHQuBwQgKZtdEd78ODs3J2vFIDpkL47H1ATRdZuhQvPwkfqJNUx5GJ3MJaiqaX7Nok0W0jdv3ju3Jaav49O64yHwOXzeftrhbBYRmIqkt6OIoRRlZ11sICGC89ZcLfFHEe02MlrWaKw4oAMTLMo+Vh/Y1bEWZKoBX2+v965gt4DI2wiQWdupvep54s3oK1xSq8uLWjNq0G7xo9ArCE552uij0gLiXiXw5PL/icmV3zqgkbS1PvoU9IegEvFunb0LdAvc3ktB4PBF0Po+/c=
+  app: curatour-be
+  on:
+    repo: Curatour/backend
+  run: rails db:migrate

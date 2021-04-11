@@ -39,6 +39,7 @@ group :development, :test do
   gem "awesome_print", :require => "ap"
   gem "hirb"
   gem 'factory_bot_rails'
+  gem 'figaro'
 end
 
 group :development do
