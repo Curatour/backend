@@ -16,5 +16,6 @@ deploy:
   app: curatour-be
   on:
     repo: Curatour/backend
+    branch: main
   cleanup: 'false'
   run: rails db:migrate
