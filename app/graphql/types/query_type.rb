@@ -41,6 +41,18 @@ module Types
       description 'Find event by ID'
     end
 
+    field :venues, [Types::VenueType], null: false do
+      description 'Find all venues'
+    end
+
+    field :venue, [Types::VenueType], null: false do
+      description 'Find venue by ID'
+    end
+
+    field :venueByName, [Types::VenueType], null: false do
+      description 'Find venue by name'
+    end
+
     def users
       User.all
     end
@@ -71,6 +83,18 @@ module Types
 
     def event(id:)
       Event.find(id)
+    end
+
+    def venues
+      Venue.all
+    end
+
+    def venue(id:)
+      Venue.find(id)
+    end
+
+    def venueByName(name:)
+      Venue.where('name ILIKE ?', "%#{name}%")
     end
   end
 end
