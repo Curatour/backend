@@ -29,6 +29,18 @@ module Types
       description 'Find all tours'
     end
 
+    field :tour, [Types::TourType], null: false do
+      description 'Find tour by ID'
+    end
+
+    field :events, [Types::EventType], null: false do
+      description 'Find all events'
+    end
+
+    field :event, [Types::EventType], null: false do
+      description 'Find event by ID'
+    end
+
     def users
       User.all
     end
@@ -47,6 +59,18 @@ module Types
 
     def tours
       Tour.all
+    end
+
+    def tour(id:)
+      Tour.find(id)
+    end
+
+    def events
+      Event.all
+    end
+
+    def event(id:)
+      Event.find(id)
     end
   end
 end
