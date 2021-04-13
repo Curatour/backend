@@ -10,6 +10,7 @@ module Mutations
       def resolve(id:, **attributes)
         Organization.find(id).tap do |org|
           org.update!(attributes)
+        end
       end
     end
   end
