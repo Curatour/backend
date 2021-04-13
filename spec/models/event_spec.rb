@@ -12,7 +12,6 @@ describe Event do
     it { should validate_presence_of :name }
     it { should validate_presence_of :tour_id }
     it { should validate_presence_of :venue_id }
-    it { should validate_presence_of :date }
     it { should validate_presence_of :start_time }
     it { should validate_presence_of :end_time }
   end

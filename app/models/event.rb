@@ -4,5 +4,5 @@ class Event < ApplicationRecord
   has_many :event_venues
   has_many :venues, through: :event_venues
 
-  validates_presence_of :name, :tour_id, :venue_id, :date, :start_time, :end_time
+  validates_presence_of :name, :tour_id, :venue_id, :start_time, :end_time
 end
