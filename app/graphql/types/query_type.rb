@@ -31,6 +31,7 @@ module Types
 
     field :tour, [Types::TourType], null: false do
       description 'Find tour by ID'
+      argument :id, ID, required: true
     end
 
     field :events, [Types::EventType], null: false do
@@ -39,6 +40,7 @@ module Types
 
     field :event, [Types::EventType], null: false do
       description 'Find event by ID'
+      argument :id, ID, required: true
     end
 
     field :venues, [Types::VenueType], null: false do
@@ -47,10 +49,12 @@ module Types
 
     field :venue, [Types::VenueType], null: false do
       description 'Find venue by ID'
+      argument :id, ID, required: true
     end
 
     field :venueByName, [Types::VenueType], null: false do
       description 'Find venue by name'
+      argument :name, String, required: true
     end
 
     def users
