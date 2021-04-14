@@ -62,7 +62,7 @@ module Types
     end
 
     def user(id:)
-      User.find(id)
+      User.where(id: id)
     end
 
     def organizations
@@ -70,7 +70,7 @@ module Types
     end
 
     def organization(id:)
-      Organization.find(id)
+      Organization.where(id: id)
     end
 
     def tours
@@ -78,7 +78,7 @@ module Types
     end
 
     def tour(id:)
-      Tour.find(id)
+      Tour.where(id: id)
     end
 
     def events
@@ -86,7 +86,7 @@ module Types
     end
 
     def event(id:)
-      Event.find(id)
+      Event.where(id: id)
     end
 
     def venues
@@ -94,7 +94,7 @@ module Types
     end
 
     def venue(id:)
-      Venue.find(id)
+      Venue.where(id: id)
     end
 
     def venueByName(name:)
