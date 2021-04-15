@@ -3,6 +3,7 @@ require 'rails_helper'
 describe Tour do
   describe 'relationships' do
     it { should belong_to :organization }
+    it { should have_many :events }
   end
 
   describe 'validations' do
