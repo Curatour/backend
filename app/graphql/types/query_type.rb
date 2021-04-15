@@ -11,7 +11,7 @@ module Types
       description 'Find all users'
     end
 
-    field :user, [Types::UserType], null: false do
+    field :user, Types::UserType, null: false do
       description 'Find user by ID'
       argument :id, ID, required: true
     end
@@ -20,7 +20,7 @@ module Types
       description 'Find all organizations'
     end
 
-    field :organization, [Types::OrganizationType], null: false do
+    field :organization, Types::OrganizationType, null: false do
       description 'Find organization by ID'
       argument :id, ID, required: true
     end
@@ -29,7 +29,7 @@ module Types
       description 'Find all tours'
     end
 
-    field :tour, [Types::TourType], null: false do
+    field :tour, Types::TourType, null: false do
       description 'Find tour by ID'
       argument :id, ID, required: true
     end
@@ -38,7 +38,7 @@ module Types
       description 'Find all events'
     end
 
-    field :event, [Types::EventType], null: false do
+    field :event, Types::EventType, null: false do
       description 'Find event by ID'
       argument :id, ID, required: true
     end
@@ -47,7 +47,7 @@ module Types
       description 'Find all venues'
     end
 
-    field :venue, [Types::VenueType], null: false do
+    field :venue, Types::VenueType, null: false do
       description 'Find venue by ID'
       argument :id, ID, required: true
     end
@@ -62,7 +62,7 @@ module Types
     end
 
     def user(id:)
-      User.where(id: id)
+      User.find(id)
     end
 
     def organizations
@@ -70,7 +70,7 @@ module Types
     end
 
     def organization(id:)
-      Organization.where(id: id)
+      Organization.find(id)
     end
 
     def tours
@@ -78,7 +78,7 @@ module Types
     end
 
     def tour(id:)
-      Tour.where(id: id)
+      Tour.find(id)
     end
 
     def events
@@ -86,7 +86,7 @@ module Types
     end
 
     def event(id:)
-      Event.where(id: id)
+      Event.find(id)
     end
 
     def venues
@@ -94,7 +94,7 @@ module Types
     end
 
     def venue(id:)
-      Venue.where(id: id)
+      Venue.find(id)
     end
 
     def venueByName(name:)
