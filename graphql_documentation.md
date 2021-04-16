@@ -43,6 +43,7 @@ name: String!
 startTime: ISO8601DateTime!
 endTime: ISO8601DateTime!
 tour: Tour!
+venues: Venue!
 ```
 
 ### Venue
@@ -203,3 +204,119 @@ Response:
 ### Update a tour
 
 `updateTour(input: UpdateTourInput!): Tour`
+
+## Nested Query Example
+
+Query all tours
+
+  - sub-query for each tour's events
+    - sub-query each event's venues
+
+```graphql
+  {
+    tours {
+      id
+      name
+      events {
+        id
+        name
+        startTime
+        endTime
+        venues {
+          id
+          name
+          address
+          city
+          state
+          zip
+          capacity
+        }
+      }
+    }
+  }
+```
+
+Response:
+
+```
+{
+  "data": {
+    "tours": [
+      {
+        "id": "1",
+        "name": "MVP Tour",
+        "events": [
+          {
+            "id": "2",
+            "name": "Redrocks Night 1",
+            "startTime": "2021-08-23T00:00:00Z",
+            "endTime": "2021-08-23T00:00:00Z",
+            "venues": [
+              {
+                "id": "1",
+                "name": "Red Rocks Park and Amphitheatre",
+                "address": "18300 W Alameda Pkwy",
+                "city": "Morrison",
+                "state": "CO",
+                "zip": "80465",
+                "capacity": 9525
+              }
+            ]
+          },
+          {
+            "id": "3",
+            "name": "Redrocks Night 2",
+            "startTime": "2021-08-24T00:00:00Z",
+            "endTime": "2021-08-24T00:00:00Z",
+            "venues": [
+              {
+                "id": "1",
+                "name": "Red Rocks Park and Amphitheatre",
+                "address": "18300 W Alameda Pkwy",
+                "city": "Morrison",
+                "state": "CO",
+                "zip": "80465",
+                "capacity": 9525
+              }
+            ]
+          },
+          {
+            "id": "4",
+            "name": "Redrocks Night 3",
+            "startTime": "2021-08-25T00:00:00Z",
+            "endTime": "2021-08-25T00:00:00Z",
+            "venues": [
+              {
+                "id": "1",
+                "name": "Red Rocks Park and Amphitheatre",
+                "address": "18300 W Alameda Pkwy",
+                "city": "Morrison",
+                "state": "CO",
+                "zip": "80465",
+                "capacity": 9525
+              }
+            ]
+          },
+          {
+            "id": "5",
+            "name": "Redrocks Night 4",
+            "startTime": "2021-08-26T00:00:00Z",
+            "endTime": "2021-08-26T00:00:00Z",
+            "venues": [
+              {
+                "id": "1",
+                "name": "Red Rocks Park and Amphitheatre",
+                "address": "18300 W Alameda Pkwy",
+                "city": "Morrison",
+                "state": "CO",
+                "zip": "80465",
+                "capacity": 9525
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
+```
