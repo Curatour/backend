@@ -71,6 +71,15 @@ module Types
       argument :name, String, required: true
     end
 
+    field :event_venues, [Types::EventVenueType], null: false do
+      description 'Find all event_venues'
+    end
+
+    field :event_venue, Types::EventVenueType, null: false do
+      description 'Find an event by event venue ID'
+      argument :id, ID, required: true
+    end
+
     def users
       User.all
     end
@@ -125,6 +134,14 @@ module Types
 
     def subEventByName(name:)
       SubEvent.where('name ILIKE ?', "%#{name}%")
+    end
+
+    def eventVenues
+      EventVenues.all
+    end
+
+    def eventVenue(id:)
+      EventVenue.find(id)
     end
   end
 end

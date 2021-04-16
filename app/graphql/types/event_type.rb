@@ -1,7 +1,7 @@
 module Types
   class EventType < Types::BaseObject
     field :tour, Types::TourType, null: false
-    field :venue, Types::VenueType, null: false
+    field :venues, [Types::VenueType], null: false
     
     field :id, ID, null: false
 

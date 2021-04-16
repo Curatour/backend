@@ -1,7 +1,7 @@
 module Types
   class TourType < Types::BaseObject
     field :organization, Types::OrganizationType, null: false
-
+    field :events, [Types::EventType], null: false
     field :id, ID, null: false
 
     field :name, String, null: false
