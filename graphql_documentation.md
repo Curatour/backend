@@ -43,7 +43,7 @@ name: String!
 startTime: ISO8601DateTime!
 endTime: ISO8601DateTime!
 tour: Tour!
-venues: Venue!
+venue: Venue!
 ```
 
 ### Venue
@@ -64,7 +64,7 @@ capacity: Int!
 
 `event(id: ID!): [Event!]!`
 
-GQL Example:
+<b>GQL Example:</b>
 
 ```graphql
 {
@@ -81,7 +81,7 @@ GQL Example:
 
 `events: [Event!]!`
 
-GQL Example:
+<b>GQL Example:</b>
 
 ```graphql
 {
@@ -131,16 +131,18 @@ GQL Example:
 `venues: [Venue!]!`
 
 ### Find sub_event by ID
-subEvent(id: ID!): SubEvent!
+
+`subEvent(id: ID!): SubEvent!`
 
 ### Find sub_event by name
-subEventByName(name: String!): [Venue!]!
+
+`subEventByName(name: String!): [Venue!]!`
 
 ## Mutations
 
-Mutations allow for Create, Update and Destroy actions to be made to the backend database. The Types section above defines fields available for querying, and the Input Types below describes input requirements.
+Existing Mutations allow for Create, Update and Destroy actions to be made to the backend database.
 
-Error handling will provide 
+The Types section above defines fields available for querying, and the Input Types below describes input requirements.
 
 ### Input Types
 
@@ -221,8 +223,7 @@ endDate: ISO8601Date
 
 `createEvent(input: CreateEventInput!): Event`
 
-<details>
-<summary><b>GQL Example:</b></summary>
+<b>GQL Example:</b>
 
 ```graphql
 mutation {
@@ -240,8 +241,6 @@ mutation {
   }
 }
 ```
-
-</details></br>
 
 <details>
   <summary><b>Response:</b></summary>
@@ -298,10 +297,9 @@ mutation {
 Query all tours
 
   - sub-query for each tour's events
-    - sub-query each event's venues
+    - sub-query each event's venue
 
-<details>
-  <summary><b>GQL Example</b></summary>
+  <b>GQL Example</b>
 
   ```graphql
     {
@@ -313,7 +311,7 @@ Query all tours
           name
           startTime
           endTime
-          venues {
+          venue {
             id
             name
             address
@@ -327,91 +325,52 @@ Query all tours
     }
   ```
 
-</details></br>
-
 <details>
   <summary><b>Response:</b></summary>
 
   ```
   {
-    "data": {
-      "tours": [
-        {
-          "id": "1",
-          "name": "MVP Tour",
-          "events": [
-            {
-              "id": "2",
-              "name": "Redrocks Night 1",
-              "startTime": "2021-08-23T00:00:00Z",
-              "endTime": "2021-08-23T00:00:00Z",
-              "venues": [
-                {
-                  "id": "1",
-                  "name": "Red Rocks Park and Amphitheatre",
-                  "address": "18300 W Alameda Pkwy",
-                  "city": "Morrison",
-                  "state": "CO",
-                  "zip": "80465",
-                  "capacity": 9525
-                }
-              ]
-            },
-            {
-              "id": "3",
-              "name": "Redrocks Night 2",
-              "startTime": "2021-08-24T00:00:00Z",
-              "endTime": "2021-08-24T00:00:00Z",
-              "venues": [
-                {
-                  "id": "1",
-                  "name": "Red Rocks Park and Amphitheatre",
-                  "address": "18300 W Alameda Pkwy",
-                  "city": "Morrison",
-                  "state": "CO",
-                  "zip": "80465",
-                  "capacity": 9525
-                }
-              ]
-            },
-            {
-              "id": "4",
-              "name": "Redrocks Night 3",
-              "startTime": "2021-08-25T00:00:00Z",
-              "endTime": "2021-08-25T00:00:00Z",
-              "venues": [
-                {
-                  "id": "1",
-                  "name": "Red Rocks Park and Amphitheatre",
-                  "address": "18300 W Alameda Pkwy",
-                  "city": "Morrison",
-                  "state": "CO",
-                  "zip": "80465",
-                  "capacity": 9525
-                }
-              ]
-            },
-            {
-              "id": "5",
-              "name": "Redrocks Night 4",
-              "startTime": "2021-08-26T00:00:00Z",
-              "endTime": "2021-08-26T00:00:00Z",
-              "venues": [
-                {
-                  "id": "1",
-                  "name": "Red Rocks Park and Amphitheatre",
-                  "address": "18300 W Alameda Pkwy",
-                  "city": "Morrison",
-                  "state": "CO",
-                  "zip": "80465",
-                  "capacity": 9525
-                }
-              ]
+  "data": {
+    "tours": [
+      {
+        "id": "1",
+        "name": "MVP Tour",
+        "events": [
+          {
+            "id": "1",
+            "name": "The Ramones",
+            "startTime": "2021-04-21T02:19:28Z",
+            "endTime": "2021-04-21T05:19:28Z",
+            "venue": {
+              "id": "7",
+              "name": "Venue 7",
+              "address": "413 Collen Plains",
+              "city": "Denver",
+              "state": "CO",
+              "zip": "80203",
+              "capacity": 4823
             }
-          ]
-        }
-      ]
-    }
+          },
+          {
+            "id": "2",
+            "name": "U2",
+            "startTime": "2021-04-22T00:22:33Z",
+            "endTime": "2021-04-22T03:22:33Z",
+            "venue": {
+              "id": "6",
+              "name": "Venue 6",
+              "address": "7397 Erma Run",
+              "city": "Denver",
+              "state": "CO",
+              "zip": "80203",
+              "capacity": 3540
+            }
+          }
+        ]
+      }
+    ]
   }
+}
 ```
+
 </details></br>
