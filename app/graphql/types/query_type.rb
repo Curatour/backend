@@ -66,7 +66,7 @@ module Types
       argument :id, ID, required: true
     end
 
-    field :subEventByName, [Types::VenueType], null: false do
+    field :subEventByName, [Types::SubEventType], null: false do
       description 'Find sub_event by name'
       argument :name, String, required: true
     end
