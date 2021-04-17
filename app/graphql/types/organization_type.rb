@@ -1,7 +1,7 @@
 module Types
   class OrganizationType < Types::BaseObject
     field :user, Types::UserType, null: false
-    field :tours, Types::TourType, null: false
+    field :tours, [Types::TourType], null: false
 
     field :id, ID, null: false
 
