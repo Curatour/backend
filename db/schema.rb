@@ -10,22 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_15_214326) do
+ActiveRecord::Schema.define(version: 2021_04_17_181324) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "event_venues", force: :cascade do |t|
-    t.bigint "event_id"
-    t.bigint "venue_id"
-    t.string "contact_name"
-    t.string "contact_phone"
-    t.string "contact_email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["event_id"], name: "index_event_venues_on_event_id"
-    t.index ["venue_id"], name: "index_event_venues_on_venue_id"
-  end
 
   create_table "events", force: :cascade do |t|
     t.string "name"
@@ -69,8 +57,8 @@ ActiveRecord::Schema.define(version: 2021_04_15_214326) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "firstName"
-    t.string "lastName"
+    t.string "first_name"
+    t.string "last_name"
     t.string "phone_number"
     t.string "email"
     t.integer "role"
@@ -89,8 +77,6 @@ ActiveRecord::Schema.define(version: 2021_04_15_214326) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "event_venues", "events"
-  add_foreign_key "event_venues", "venues"
   add_foreign_key "events", "tours"
   add_foreign_key "events", "venues"
   add_foreign_key "organizations", "users"

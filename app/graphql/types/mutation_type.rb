@@ -4,11 +4,11 @@ module Types
       description 'Create an organization belonging to a user'
     end
 
-    field :update_organization, mutation: Mutations::Organizations::CreateOrganization do
+    field :update_organization, mutation: Mutations::Organizations::UpdateOrganization do
       description 'Update an organization'
     end
 
-    field :destroy_organization, mutation: Mutations::Organizations::CreateOrganization do
+    field :destroy_organization, mutation: Mutations::Organizations::DestroyOrganization do
       description 'Destroy an organization'
     end
 
@@ -35,17 +35,5 @@ module Types
     field :destroy_tour, mutation: Mutations::Tours::DestroyTour do
       description 'Destroy a tour'
     end
-
-    field :create_event_venue, mutation: Mutations::EventVenues::CreateEventVenue do
-      description 'Create an event venue (the venue where an event is being held)'
-    end
-
-    # field :update_event_venue, mutation: Mutations::EventVenues::UpdateEventVenue do
-    #   description 'Update an event venue (the venue where an event is being held)'
-    # end
-
-    # field :destroy_event_venue, mutation: Mutations::EventVenues::DestroyEventVenue do
-    #   description 'Destroy an event venue (the venue where an event is being held)'
-    # end
   end
 end

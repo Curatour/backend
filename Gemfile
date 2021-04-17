@@ -30,6 +30,8 @@ gem 'rack-cors'
 gem 'sprockets', '~> 3'
 
 gem 'graphql'
+gem 'factory_bot_rails'
+gem 'faker'
 
 group :development, :test do
   gem 'pry'
@@ -46,7 +48,6 @@ group :test do
   gem "orderly"
   gem "awesome_print", :require => "ap"
   gem "hirb"
-  gem 'factory_bot_rails'
   gem 'rake'
 end
 
