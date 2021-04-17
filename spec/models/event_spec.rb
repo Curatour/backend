@@ -3,9 +3,8 @@ require 'rails_helper'
 describe Event do
   describe 'relationships' do
     it { should belong_to :tour }
+    it { should belong_to :venue }
     it { should have_many :sub_events }
-    it { should have_many :event_venues }
-    it { should have_many(:venues).through(:event_venues) }
   end
 
   describe 'validations' do

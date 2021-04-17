@@ -2,8 +2,7 @@ require 'rails_helper'
 
 describe Venue do
   describe 'relationships' do
-    it { should have_many :event_venues }
-    it { should have_many(:events).through(:event_venues) }
+    it { should have_many :events }
   end
 
   describe 'validations' do
