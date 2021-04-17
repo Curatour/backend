@@ -242,6 +242,30 @@ mutation {
 }
 ```
 
+Using Input Object:
+
+```graphql
+mutation createEvent($input: CreateEventInput!) {
+  createEvent(input: $input) {
+    id
+    name
+    startTime
+    endTime
+  }
+}
+```
+Query vars
+```json
+{ "input": {
+    "tourId": 1,
+    "name": "Redrocks Night 1",
+    "venueId": 1,
+    "startTime": "2021-08-23T18:30:00-06:00",
+    "endTime": "2021-08-23T21:30:00-06:00"
+  }
+}
+```
+
 <details>
   <summary><b>Response:</b></summary>
 
