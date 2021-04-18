@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :venue do
-    name { Faker::Mountain.name + "Amphitheater" }
+    name { Faker::Mountain.name + " Amphitheater" }
     address { Faker::Address.street_address }
     city { "Denver" }
     state { "CO" }

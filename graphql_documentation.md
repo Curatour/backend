@@ -413,6 +413,18 @@ mutation {
 
 `destroyContact(input: DestroyContactInput!): Contact`
 
+GQL Example:
+
+```graphql
+mutation {
+  destroyContact(input: {
+    id: 11
+  }) {
+    id
+  }
+}
+```
+
 ## Nested Query Example
 
 Query all tours
