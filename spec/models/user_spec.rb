@@ -3,6 +3,7 @@ require 'rails_helper'
 describe User do
   describe 'relationships' do
     it { should have_many :organizations }
+    it { should have_many :contacts }
   end
 
   describe 'validations' do

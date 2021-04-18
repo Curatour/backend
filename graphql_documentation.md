@@ -238,6 +238,35 @@ startDate: ISO8601Date
 endDate: ISO8601Date
 ```
 
+#### CreateContactInput!
+
+```ruby
+userId: Int!
+firstName: String!
+lastName: String!
+phoneNumber: String!
+email: String!
+note: String
+```
+
+#### UpdateContactInput!
+
+```ruby
+id: Int!
+userId: Int
+firstName: String
+lastName: String
+phoneNumber: String
+email: String
+note: String
+```
+
+#### DestroyContactInput!
+
+```ruby
+id: Int!
+```
+
 ### Create an event belonging to a tour
 
 `createEvent(input: CreateEventInput!): Event`
@@ -334,6 +363,55 @@ Query vars
 ### Update a tour
 
 `updateTour(input: UpdateTourInput!): Tour`
+
+### Create a contact belonging to a user
+
+`createContact(input: CreateContactInput!): Contact`
+
+GQL Example:
+
+```graphql
+mutation {
+  createContact(input: {
+    userId: 1,
+    firstName: "Test",
+    lastName: "Testerface",
+    phoneNumber: "555-555-5555",
+    email: "testerface@example.com",
+    note: "Optional note"
+  }) {
+    firstName
+    lastName
+  }
+}
+```
+
+### Update a contact
+
+`updateContact(input: UpdateContactInput!): Contact`
+
+GQL Example:
+
+```graphql
+mutation {
+  updateContact(input: {
+    id: 1,
+    firstName: "Testa",
+    lastName: "Testerfacer",
+    phoneNumber: "555-555-5555",
+    email: "testerface@example.com",
+    note: "Changed note"
+  }) {
+    firstName
+    lastName
+    note
+  }
+}
+```
+
+### Destroy a contact
+
+`destroyContact(input: DestroyContactInput!): Contact`
 
 ## Nested Query Example
 

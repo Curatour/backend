@@ -1,5 +1,7 @@
 module Types
   class ContactType < Types::BaseObject
+    field :user, Types::UserType, null: false
+    
     field :id, ID, null: false
 
     field :first_name, String, null: false
