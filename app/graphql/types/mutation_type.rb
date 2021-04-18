@@ -35,5 +35,17 @@ module Types
     field :destroy_tour, mutation: Mutations::Tours::DestroyTour do
       description 'Destroy a tour'
     end
+
+    field :create_contact, mutation: Mutations::Contacts::CreateContact do
+      description 'Create a contact belonging to a user'
+    end
+
+    field :update_contact, mutation: Mutations::Contacts::UpdateContact do
+      description 'Update a contact'
+    end
+
+    field :destroy_contact, mutation: Mutations::Contacts::DestroyContact do
+      description 'Destroy a contact'
+    end
   end
 end

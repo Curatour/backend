@@ -55,7 +55,18 @@ address: String!
 city: String!
 state: String!
 zip: String!
-capacity: Int!
+capacity: Int
+```
+
+### Contact
+
+```ruby
+id: ID!
+firstName: String!
+lastName: String!
+email: String!
+phoneNumber: String!
+note: String
 ```
 
 ## Queries
@@ -138,6 +149,14 @@ capacity: Int!
 
 `subEventByName(name: String!): [Venue!]!`
 
+### Find a contact by ID
+
+`contact(id: ID!): Contact!`
+
+### Find all contacts
+
+`contacts: [Contact!]!`
+
 ## Mutations
 
 Existing Mutations allow for Create, Update and Destroy actions to be made to the backend database.
@@ -217,6 +236,35 @@ organizationId: Int
 name: String
 startDate: ISO8601Date
 endDate: ISO8601Date
+```
+
+#### CreateContactInput!
+
+```ruby
+userId: Int!
+firstName: String!
+lastName: String!
+phoneNumber: String!
+email: String!
+note: String
+```
+
+#### UpdateContactInput!
+
+```ruby
+id: Int!
+userId: Int
+firstName: String
+lastName: String
+phoneNumber: String
+email: String
+note: String
+```
+
+#### DestroyContactInput!
+
+```ruby
+id: Int!
 ```
 
 ### Create an event belonging to a tour
@@ -315,6 +363,67 @@ Query vars
 ### Update a tour
 
 `updateTour(input: UpdateTourInput!): Tour`
+
+### Create a contact belonging to a user
+
+`createContact(input: CreateContactInput!): Contact`
+
+GQL Example:
+
+```graphql
+mutation {
+  createContact(input: {
+    userId: 1,
+    firstName: "Test",
+    lastName: "Testerface",
+    phoneNumber: "555-555-5555",
+    email: "testerface@example.com",
+    note: "Optional note"
+  }) {
+    firstName
+    lastName
+  }
+}
+```
+
+### Update a contact
+
+`updateContact(input: UpdateContactInput!): Contact`
+
+GQL Example:
+
+```graphql
+mutation {
+  updateContact(input: {
+    id: 1,
+    firstName: "Testa",
+    lastName: "Testerfacer",
+    phoneNumber: "555-555-5555",
+    email: "testerface@example.com",
+    note: "Changed note"
+  }) {
+    firstName
+    lastName
+    note
+  }
+}
+```
+
+### Destroy a contact
+
+`destroyContact(input: DestroyContactInput!): Contact`
+
+GQL Example:
+
+```graphql
+mutation {
+  destroyContact(input: {
+    id: 11
+  }) {
+    id
+  }
+}
+```
 
 ## Nested Query Example
 

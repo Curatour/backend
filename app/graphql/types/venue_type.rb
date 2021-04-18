@@ -7,6 +7,6 @@ module Types
     field :city, String, null: false
     field :state, String, null: false
     field :zip, String, null: false
-    field :capacity, Integer, null: false
+    field :capacity, Integer, null: true
   end
 end

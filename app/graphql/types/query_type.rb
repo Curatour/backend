@@ -71,6 +71,15 @@ module Types
       argument :name, String, required: true
     end
 
+    field :contacts, [Types::ContactType], null: false do
+      description 'Find all contacts'
+    end
+
+    field :contact, Types::ContactType, null: false do
+      description 'Find a contact by ID'
+      argument :id, ID, required: true
+    end
+
     def users
       User.all
     end
@@ -125,6 +134,14 @@ module Types
 
     def subEventByName(name:)
       SubEvent.where('name ILIKE ?', "%#{name}%")
+    end
+
+    def contacts
+      Contact.all
+    end
+
+    def contact(id:)
+      Contact.find(id)
     end
   end
 end
