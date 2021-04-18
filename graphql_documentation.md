@@ -55,7 +55,18 @@ address: String!
 city: String!
 state: String!
 zip: String!
-capacity: Int!
+capacity: Int
+```
+
+### Contact
+
+```ruby
+id: ID!
+firstName: String!
+lastName: String!
+email: String!
+phoneNumber: String!
+note: String
 ```
 
 ## Queries
@@ -137,6 +148,14 @@ capacity: Int!
 ### Find sub_event by name
 
 `subEventByName(name: String!): [Venue!]!`
+
+### Find a contact by ID
+
+`contact(id: ID!): Contact!`
+
+### Find all contacts
+
+`contacts: [Contact!]!`
 
 ## Mutations
 
