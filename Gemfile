@@ -32,6 +32,7 @@ gem 'sprockets', '~> 3'
 gem 'graphql'
 gem 'factory_bot_rails'
 gem 'faker'
+gem 'graphql-batch'
 
 group :development, :test do
   gem 'pry'

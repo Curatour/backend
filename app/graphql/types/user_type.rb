@@ -10,5 +10,13 @@ module Types
     field :phone_number, String, null: false
     field :email, String, null: false
     field :role, String, null: false
+
+    def organizations
+      Loaders::HasManyLoader.for(Organization, :user_id).load(object.id)
+    end
+
+    def contacts
+      Loaders::HasManyLoader.for(Contact, :user_id).load(object.id)
+    end
   end
 end
