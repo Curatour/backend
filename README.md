@@ -768,8 +768,8 @@ To take it one step further...
       phoneNumber
       note
     }
-   	organizations {
-    	tours {
+    organizations {
+      tours {
         id
         name
         events {
