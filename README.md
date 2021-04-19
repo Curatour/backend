@@ -6,6 +6,12 @@ Curatour's backend API is built with [GraphQL Ruby](https://graphql-ruby.org/).
 
 If you're new to GraphQL, a good starting point is the GraphQL Intro at [graphql.org](https://graphql.org/learn/). Once you have a basic understanding of GraphQL query and mutation syntax, using Curatour's GraphQL interface outlined below will be straightforward!
 
+## Data Model and ERD
+
+This entity relationship diagram (ERD) shows the setup of the PostgreSQL database being used by the Curatour backend.
+
+![entity relationship diagram](/public/curatour_erd.png)
+
 ## Types
 
 Each GraphQL Type represents the models and their respective attributes available for querying and mutating.
@@ -655,7 +661,7 @@ Query variables:
 
 GraphQL allows relational queries to be made when associations between models exist.
 
-For example, a Tour has many Events, and each Event belong to a Venue. So the below nested query can be made:
+For example, a Tour has many Events, and each Event belongs to a Venue. So the below nested query can be made:
 
 - Query all `tours {...}`
   - sub-query for each tour's `events {...}`
