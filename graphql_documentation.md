@@ -523,7 +523,7 @@ mutation {
 id: Int!
 ```
 
-GQL Example:
+<b>GQL Example:</b>
 
 ```graphql
 mutation {
@@ -534,6 +534,48 @@ mutation {
   }
 }
 ```
+
+### Create a Venue
+
+`createVenue(input: CreateVenueInput!): Venue`
+
+<b>GQL Example:</b>
+
+```graphql
+mutation createVenue($input: CreateVenueInput!) {
+  createVenue(input: $input) {
+    id
+    name
+    address
+    city
+    state
+    zip
+    capacity
+  }
+}
+```
+
+Query variables:
+
+```json
+{ "input": {
+    "name": "New Venue Test",
+    "address": "123 Testing Street",
+    "city": "Denver",
+    "state": "CO",
+    "zip": "80203",
+    "capacity": 5000
+  }
+}
+```
+
+### Update a Venue
+
+``
+
+### Destroy a Venue
+
+``
 
 ## Nested Query Example
 

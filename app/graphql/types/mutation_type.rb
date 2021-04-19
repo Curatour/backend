@@ -59,5 +59,13 @@ module Types
     field :destroy_sub_event, mutation: Mutations::SubEvents::DestroySubEvent do
       description 'Destroy a subEvent'
     end
+
+    field :create_venue, mutation: Mutations::Venues::CreateVenue do
+      description 'Create a venue'
+    end
+
+    field :update_venue, mutation: Mutations::Venues::UpdateVenue do
+      description 'Update a venue'
+    end
   end
 end
