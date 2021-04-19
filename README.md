@@ -753,7 +753,9 @@ To take it one step further...
         - sub-query for each event's `sub_events {...}`
       - sub-query each event's `venue {...}`
 
-<b>GQL Example</b>
+<details>
+  <summary><b>GQL Example</b></summary>
+
   
 ```graphql
 {
@@ -798,3 +800,5 @@ To take it one step further...
   }
 }
 ```
+
+</details>
