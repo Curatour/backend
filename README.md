@@ -1,5 +1,9 @@
 # Curatour GraphQL API
 
+## Table of Contents
+
+Hit the menu icon at the top left of the readme panel!
+
 ## Getting Started
 
 Curatour's backend API is built with [GraphQL Ruby](https://graphql-ruby.org/).
