@@ -6,7 +6,7 @@ module Mutations
       argument :city, String, required: true
       argument :state, String, required: true
       argument :zip, String, required: true
-      argument :capacity, Integer, required: true
+      argument :capacity, Integer, required: false
 
       type Types::VenueType
 
