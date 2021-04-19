@@ -182,7 +182,12 @@ note: String
 
 Existing Mutations allow for Create, Update and Destroy actions to be made to the backend database.
 
-The Input Types below describes input requirements. For example, in `createEvent(input: CreateEventInput!): Event`, `CreateEventInput!` refers to the type defined below. `Event` defines what Type is available to query in the response.
+The Input Types below describes input requirements. 
+
+For example, in `createEvent(input: CreateEventInput!): Event`, 
+
+- `CreateEventInput!` refers to the type defined below
+- `: Event` defines the Type to expect in the response
 
 ### Create an organization belonging to a user
 
@@ -539,6 +544,17 @@ mutation {
 
 `createVenue(input: CreateVenueInput!): Venue`
 
+#### CreateVenueInput!
+
+```ruby
+name: String!
+address: String!
+city: String!
+state: String!
+zip: String!
+capacity: Int
+```
+
 <b>GQL Example:</b>
 
 ```graphql
@@ -573,6 +589,18 @@ Query variables:
 
 `updateVenue(input: UpdateVenueInput!): Venue`
 
+#### UpdateVenueInput!
+
+```ruby
+id: ID!
+name: String
+address: String
+city: String
+state: String
+zip: String
+capacity: Int
+```
+
 GQL Example:
 
 ```graphql
@@ -597,6 +625,12 @@ Query variables:
 ### Destroy a Venue
 
 `destroyVenue(input: DestroyVenueInput!): Venue`
+
+#### DestroyVenueInput!
+
+```ruby
+id: ID!
+```
 
 GQL Example:
 
