@@ -67,5 +67,9 @@ module Types
     field :update_venue, mutation: Mutations::Venues::UpdateVenue do
       description 'Update a venue'
     end
+
+    field :destroy_venue, mutation: Mutations::Venues::DestroyVenue do
+      description 'Destroy a venue'
+    end
   end
 end

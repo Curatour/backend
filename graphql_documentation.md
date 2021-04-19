@@ -571,11 +571,51 @@ Query variables:
 
 ### Update a Venue
 
-``
+`updateVenue(input: UpdateVenueInput!): Venue`
+
+GQL Example:
+
+```graphql
+mutation updateVenue($input: UpdateVenueInput!) {
+  updateVenue(input: $input) {
+    id
+    name
+  }
+}
+```
+
+Query variables:
+
+```json
+{ "input": {
+  "id": 12,
+  "name": "Updated Venue Test"
+  }
+}
+```
 
 ### Destroy a Venue
 
-``
+`destroyVenue(input: DestroyVenueInput!): Venue`
+
+GQL Example:
+
+```graphql
+mutation destroyVenue($input: DestroyVenueInput!) {
+  destroyVenue(input: $input) {
+    id
+  }
+}
+```
+
+Query variables:
+
+```json
+{ "input": {
+  "id": 12
+  }
+}
+```
 
 ## Nested Query Example
 
