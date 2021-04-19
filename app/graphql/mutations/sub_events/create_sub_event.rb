@@ -11,7 +11,7 @@ module Mutations
       type Types::SubEventType
 
       def resolve(event_id:, **attributes)
-        Event.find(organization_id).tours.create!(attributes)
+        Event.find(event_id).sub_events.create!(attributes)
       end
     end
   end
