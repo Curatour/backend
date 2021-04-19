@@ -657,7 +657,7 @@ Query variables:
 }
 ```
 
-## Nested Query Example
+## Nested Query Examples
 
 GraphQL allows relational queries to be made when associations between models exist.
 
@@ -742,3 +742,63 @@ For example, a Tour has many Events, and each Event belongs to a Venue. So the b
 ```
 
 </details></br>
+
+To take it one step further...
+
+- Query `user(id: 1)`
+  - query the user's `contacts {...}`
+  - query the user's `organizations {...}`
+    - Query each organization's `tours {...}`
+      - sub-query for each tour's `events {...}`
+        - sub-query for each event's `sub_events {...}`
+      - sub-query each event's `venue {...}`
+
+<details>
+  <summary><b>GQL Example</b></summary>
+
+  
+```graphql
+{
+  user(id:1) {
+    contacts {
+      id
+      firstName
+      lastName
+      email
+      phoneNumber
+      note
+    }
+   	organizations {
+    	tours {
+        id
+        name
+        events {
+          id
+          name
+          startTime
+          endTime
+          subEvents {
+            id
+            name
+            description
+            startTime
+            endTime
+            completed
+          }
+          venue {
+            id
+            name
+            address
+            city
+            state
+            zip
+            capacity
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+</details>
