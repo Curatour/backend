@@ -1,8 +1,18 @@
 # Curatour GraphQL API
 
+## Getting Started
+
+Curatour's backend API is built with [GraphQL Ruby](https://graphql-ruby.org/).
+
+If you're new to GraphQL, a good starting point is the GraphQL Intro at [graphql.org](https://graphql.org/learn/). Once you have a basic understanding of GraphQL query and mutation syntax, using Curatour's GraphQL interface outlined below will be straightforward!
+
 ## Types
 
-Each GraphQL Type represents the models and their respective attributes available for querying and mutating. The following Types and respective fields are available from the `https://curatour-be.herokuapp.com/graphql` endpoint:
+Each GraphQL Type represents the models and their respective attributes available for querying and mutating.
+
+All GraphQL requests are sent via `POST` HTTP request to the `https://curatour-be.herokuapp.com/graphql` endpoint. 
+
+The following Types and their respective fields are available for querying:
 
 ### User
 
@@ -161,19 +171,11 @@ note: String
 
 Existing Mutations allow for Create, Update and Destroy actions to be made to the backend database.
 
-The Types section above defines fields available for querying, and the Input Types below describes input requirements.
+The Input Types below describes input requirements. For example, in `createEvent(input: CreateEventInput!): Event`, `CreateEventInput!` refers to the type defined below. `Event` defines what Type is available to query in the response.
 
-### Input Types
+### Create an organization belonging to a user
 
-#### CreateEventInput!
-
-```ruby
-tourId: Int!
-name: String!
-venueId: Int!
-startTime: ISO8601Date!
-endTime: ISO8601Date!
-```
+`createOrganization(input: CreateOrganizationInput!): Organization`
 
 #### CreateOrganizationInput!
 
@@ -181,6 +183,32 @@ endTime: ISO8601Date!
 name: String!
 userId: Int!
 ```
+
+### Update an organization
+
+`updateOrganization(input: CreateOrganizationInput!): Organization`
+
+#### UpdateOrganizationInput!
+
+```ruby
+id: Int!
+name: String
+userId: Int
+```
+
+### Destroy an organization
+
+`destroyOrganization(input: CreateOrganizationInput!): Organization`
+
+#### DestroyOrganizationInput!
+
+```ruby
+id: Int!
+```
+
+### Create a tour belonging to an organization
+
+`createTour(input: CreateTourInput!): Tour`
 
 #### CreateTourInput!
 
@@ -191,42 +219,9 @@ startDate: ISO8601Date!
 endDate: ISO8601Date!
 ```
 
-#### DestroyEventInput!
+### Update a tour
 
-```ruby
-id: Int!
-```
-
-#### DestroyOrganizationInput!
-
-```ruby
-id: Int!
-```
-
-#### DestroyTourInput!
-
-```ruby
-id: Int!
-```
-
-#### UpdateEventInput!
-
-```ruby
-id: Int!
-tourId: Int
-name: String
-venueId: Int
-startTime: ISO8601Date
-endTime: ISO8601Date
-```
-
-#### UpdateOrganizationInput!
-
-```ruby
-id: Int!
-name: String
-userId: Int
-```
+`updateTour(input: UpdateTourInput!): Tour`
 
 #### UpdateTourInput!
 
@@ -238,30 +233,11 @@ startDate: ISO8601Date
 endDate: ISO8601Date
 ```
 
-#### CreateContactInput!
+### Destroy a tour
 
-```ruby
-userId: Int!
-firstName: String!
-lastName: String!
-phoneNumber: String!
-email: String!
-note: String
-```
+`destroyTour(input: DestroyTourInput!): Tour`
 
-#### UpdateContactInput!
-
-```ruby
-id: Int!
-userId: Int
-firstName: String
-lastName: String
-phoneNumber: String
-email: String
-note: String
-```
-
-#### DestroyContactInput!
+#### DestroyTourInput!
 
 ```ruby
 id: Int!
@@ -270,6 +246,16 @@ id: Int!
 ### Create an event belonging to a tour
 
 `createEvent(input: CreateEventInput!): Event`
+
+#### CreateEventInput!
+
+```ruby
+tourId: Int!
+name: String!
+venueId: Int!
+startTime: ISO8601Date!
+endTime: ISO8601Date!
+```
 
 <b>GQL Example:</b>
 
@@ -290,7 +276,7 @@ mutation {
 }
 ```
 
-Using Input Object:
+<b>Using input object variables:</b>
 
 ```graphql
 mutation createEvent($input: CreateEventInput!) {
@@ -302,7 +288,9 @@ mutation createEvent($input: CreateEventInput!) {
   }
 }
 ```
-Query vars
+
+<i>Query variables:</i>
+
 ```json
 { "input": {
     "tourId": 1,
@@ -332,41 +320,134 @@ Query vars
 
 </details></br>
 
-### Create an organization belonging to a user
+### Update an event
 
-`createOrganization(input: CreateOrganizationInput!): Organization`
+`updateEvent(input: UpdateEventInput!): Event`
 
-### Create a tour belonging to an organization
+#### UpdateEventInput!
 
-`createTour(input: CreateTourInput!): Tour`
+```ruby
+id: Int!
+tourId: Int
+name: String
+venueId: Int
+startTime: ISO8601Date
+endTime: ISO8601Date
+```
 
 ### Destroy an event
 
 `destroyEvent(input: DestroyEventInput!): Event`
 
-### Destroy an organization
+#### DestroyEventInput!
 
-`destroyOrganization(input: CreateOrganizationInput!): Organization`
+```ruby
+id: Int!
+```
 
-### Destroy a tour
+### Create a subEvent belonging to an event
 
-`destroyTour(input: DestroyTourInput!): Tour`
+`createSubEvent(input: CreateSubEventInput!): SubEvent`
 
-### Update an event
+#### CreateSubEventInput!
 
-`updateEvent(input: UpdateEventInput!): Event`
+```ruby
+eventId: Int!
+name: String!
+description: String!
+startTime: ISO8601Date!
+endTime: ISO8601Date!
+```
 
-### Update an organization
+GQL Example:
 
-`updateOrganization(input: CreateOrganizationInput!): Organization`
+```graphql
+mutation createSubEvent($input: CreateSubEventInput!) {
+  createSubEvent(input: $input) {
+    id
+    name
+    description
+  }
+}
+```
 
-### Update a tour
+Query vars
 
-`updateTour(input: UpdateTourInput!): Tour`
+```json
+{ "input": {
+    "eventId": 1,
+    "name": "DOTHESTUFFF",
+    "description": "We gotta do the stuff",
+    "startTime": "2021-08-23T18:30:00-06:00",
+    "endTime": "2021-08-23T21:30:00-06:00"
+  }
+}
+```
+
+### Update a subEvent
+
+`updateSubEvent(input: UpdateSubEventInput!): SubEvent`
+
+#### UpdateSubEventInput!
+
+```ruby
+id: Int!
+eventId: Int
+name: String
+description: String
+startTime: ISO8601Date
+endTime: ISO8601Date
+```
+
+GQL Example:
+
+```graphql
+mutation updateSubEvent($input: UpdateSubEventInput!) {
+  updateSubEvent(input: $input) {
+    id
+    name
+    description
+  }
+}
+```
+
+Query vars
+
+```json
+{ "input": {
+    "eventId": 1,
+    "name": "DOTHESTUFFF",
+    "description": "We gotta do the stuff",
+    "startTime": "2021-08-23T18:30:00-06:00",
+    "endTime": "2021-08-23T21:30:00-06:00"
+  }
+}
+```
+
+### Destroy a subEvent
+
+`destroySubEvent(input: DestroySubEventInput!): SubEvent`
+
+#### DestroySubEventInput!
+
+```ruby
+id: Int!
+```
 
 ### Create a contact belonging to a user
 
 `createContact(input: CreateContactInput!): Contact`
+
+#### CreateContactInput!
+
+```ruby
+userId: Int!
+firstName: String!
+lastName: String!
+phoneNumber: String!
+email: String!
+note: String
+```
 
 GQL Example:
 
@@ -389,6 +470,18 @@ mutation {
 ### Update a contact
 
 `updateContact(input: UpdateContactInput!): Contact`
+
+#### UpdateContactInput!
+
+```ruby
+id: Int!
+userId: Int
+firstName: String
+lastName: String
+phoneNumber: String
+email: String
+note: String
+```
 
 GQL Example:
 
@@ -413,6 +506,12 @@ mutation {
 
 `destroyContact(input: DestroyContactInput!): Contact`
 
+#### DestroyContactInput!
+
+```ruby
+id: Int!
+```
+
 GQL Example:
 
 ```graphql
@@ -427,10 +526,13 @@ mutation {
 
 ## Nested Query Example
 
-Query all tours
+GraphQL allows relational queries to be made when associations between models exist.
 
-  - sub-query for each tour's events
-    - sub-query each event's venue
+For example, a Tour has many Events, and each Event belong to a Venue. So the below nested query can be made:
+
+- Query all `tours {...}`
+  - sub-query for each tour's `events {...}`
+    - sub-query each event's `venue {...}`
 
   <b>GQL Example</b>
 
