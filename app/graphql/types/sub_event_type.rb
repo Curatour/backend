@@ -8,5 +8,6 @@ module Types
     field :description, String, null: false
     field :start_time, GraphQL::Types::ISO8601DateTime, null: false
     field :end_time, GraphQL::Types::ISO8601DateTime, null: false
+    field :completed, Boolean, null: false
   end
 end
