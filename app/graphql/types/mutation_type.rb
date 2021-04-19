@@ -47,5 +47,17 @@ module Types
     field :destroy_contact, mutation: Mutations::Contacts::DestroyContact do
       description 'Destroy a contact'
     end
+
+    field :create_sub_event, mutation: Mutations::SubEvents::CreateSubEvent do
+      description 'Create a sub event belonging to an event'
+    end
+
+    field :update_sub_event, mutation: Mutations::SubEvents::UpdateSubEvent do
+      description 'Update a subEvent'
+    end
+
+    field :destroy_sub_event, mutation: Mutations::SubEvents::DestroySubEvent do
+      description 'Destroy a subEvent'
+    end
   end
 end
