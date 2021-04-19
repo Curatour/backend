@@ -1,6 +1,6 @@
 module Types
   class SubEventType < Types::BaseObject
-    field :event, Types::SubEventType, null: false
+    field :event, Types::EventType, null: false
 
     field :id, ID, null: false
 

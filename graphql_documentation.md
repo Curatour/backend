@@ -56,6 +56,17 @@ tour: Tour!
 venue: Venue!
 ```
 
+### SubEvent
+
+```ruby
+id: ID!
+name: String!
+description: String!
+completed: Boolean!
+endTime: ISO8601DateTime!
+event: Event!
+```
+
 ### Venue
 
 ```ruby

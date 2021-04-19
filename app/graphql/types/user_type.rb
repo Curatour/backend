@@ -1,6 +1,7 @@
 module Types
   class UserType < Types::BaseObject
     field :organizations, [Types::OrganizationType], null: true
+    field :contacts, [Types::ContactType], null: true
 
     field :id, ID, null: false
 
