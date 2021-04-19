@@ -9,6 +9,10 @@ module Types
     field :city, String, null: false
     field :state, String, null: false
     field :zip, String, null: false
-    field :capacity, Integer, null: false
+    field :capacity, Integer, null: true
+
+    def events
+      Loaders::HasManyLoader.for(Event, :venue_id).load(object.id)
+    end
   end
 end

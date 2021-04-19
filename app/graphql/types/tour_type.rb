@@ -7,5 +7,13 @@ module Types
     field :name, String, null: false
     field :start_date, GraphQL::Types::ISO8601Date, null: false
     field :end_date, GraphQL::Types::ISO8601Date, null: false
+
+    def tour
+      Loaders::BelongsToLoader.for(Organization).load(object.organization_id)
+    end
+
+    def events
+      Loaders::HasManyLoader.for(Event, :tour_id).load(object.id)
+    end
   end
 end

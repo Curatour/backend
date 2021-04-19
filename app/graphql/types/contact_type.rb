@@ -9,5 +9,9 @@ module Types
     field :phone_number, String, null: false
     field :email, String, null: false
     field :note, String, null: true
+
+    def user
+      Loaders::BelongsToLoader.for(User).load(object.user_id)
+    end
   end
 end
