@@ -14,5 +14,6 @@ org = Organization.create!(name: "MVP Organization", user: user)
 tour = Tour.create!(name: "MVP Tour", start_date: "2021-08-23", end_date: "2021-12-31", organization: org)
 
 FactoryBot.create_list(:venue, 10)
-FactoryBot.create_list(:event, 30)
+FactoryBot.create_list(:event_with_sub_events, 30)
 FactoryBot.create_list(:contact, 10)
+
