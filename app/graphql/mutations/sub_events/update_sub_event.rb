@@ -5,6 +5,7 @@ module Mutations
       argument :event_id, Integer, required: false
       argument :name, String, required: false
       argument :description, String, required: false
+      argument :completed, Boolean, required: false
 
       argument :start_time, GraphQL::Types::ISO8601DateTime, required: false
       argument :end_time, GraphQL::Types::ISO8601DateTime, required: false
