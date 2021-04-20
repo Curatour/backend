@@ -38,32 +38,63 @@ module Mutations
             user: { "id": user.id.to_s }
           )
         end
-      end
 
-      def g_query(id:, user_id:)
-        <<~GQL
-          mutation {
-            updateContact(input: {
-              id: #{id}
-              firstName: "Rob"
-              lastName: "MacIlravy"
-              phoneNumber: "3023334444"
-              email: "theone@me.com"
-              note: "not a fan"
-              userId: #{user_id}
-            }){
-              id
-              firstName
-              lastName
-              phoneNumber
-              email
-              note
-              user {
+        def g_query(id:, user_id:)
+          <<~GQL
+            mutation {
+              updateContact(input: {
+                id: #{id}
+                firstName: "Rob"
+                lastName: "MacIlravy"
+                phoneNumber: "3023334444"
+                email: "theone@me.com"
+                note: "not a fan"
+                userId: #{user_id}
+              }){
                 id
+                firstName
+                lastName
+                phoneNumber
+                email
+                note
+                user {
+                  id
+                }
               }
             }
-          }
-        GQL
+          GQL
+        end
+      end
+
+      describe 'sad path' do
+        it 'returns with errors' do
+          user = create(:user)
+          contact = create(:contact, user_id: user.id)
+
+          post '/graphql', params: { query: g_query(id: contact.id) }
+          json = JSON.parse(response.body, symbolize_names: true)
+          expect(json).to have_key(:errors)
+        end
+
+        def g_query(id:)
+          <<~GQL
+            mutation {
+              destroyContact( input: {
+                id: 'not an id'
+              }) {
+                id
+                firstName
+                lastName
+                email
+                phoneNumber
+                note
+                user {
+                  id
+                }
+              }
+            }
+          GQL
+        end
       end
     end
   end

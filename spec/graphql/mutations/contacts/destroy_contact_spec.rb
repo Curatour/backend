@@ -31,26 +31,57 @@ module Mutations
             user: { "id": contact.user.id.to_s }
           )
         end
-      end
 
-      def g_query(id:)
-        <<~GQL
-          mutation {
-            destroyContact( input: {
-              id: #{id}
-            }) {
-              id
-              firstName
-              lastName
-              email
-              phoneNumber
-              note
-              user {
+        def g_query(id:)
+          <<~GQL
+            mutation {
+              destroyContact( input: {
+                id: #{id}
+              }) {
                 id
+                firstName
+                lastName
+                email
+                phoneNumber
+                note
+                user {
+                  id
+                }
               }
             }
-          }
-        GQL
+          GQL
+        end
+      end
+
+      describe 'sad path' do
+        it 'returns with errors' do
+          user = create(:user)
+          contact = create(:contact, user_id: user.id)
+
+          post '/graphql', params: { query: g_query(id: contact.id) }
+          json = JSON.parse(response.body, symbolize_names: true)
+          expect(json).to have_key(:errors)
+        end
+
+        def g_query(id:)
+          <<~GQL
+            mutation {
+              destroyContact( input: {
+                id: 'not an id'
+              }) {
+                id
+                firstName
+                lastName
+                email
+                phoneNumber
+                note
+                user {
+                  id
+                }
+              }
+            }
+          GQL
+        end
       end
     end
   end

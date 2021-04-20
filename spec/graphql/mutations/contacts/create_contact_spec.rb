@@ -55,6 +55,37 @@ module Mutations
           }
         GQL
       end
+
+      describe 'sad path with missing params' do
+        it 'returns errors' do
+          user = create(:user)
+
+          post '/graphql', params: { query: g_query(user_id: user.id) }
+          json = JSON.parse(response.body, symbolize_names: true)
+          expect(json).to have_key(:errors)
+        end
+
+        def g_query(user_id:)
+          <<~GQL
+            mutation {
+              createContact( input: {
+                firstName: "Robert"
+                userId: #{user_id}
+              } ){
+                id
+                firstName
+                lastName
+                phoneNumber
+                email
+                note
+                user {
+                  id
+                }
+              }
+            }
+          GQL
+        end
+      end
     end
   end
 end
