@@ -31,24 +31,51 @@ module Mutations
             organization: { "id": tour.organization.id.to_s }
           )
         end
-      end
 
-      def g_query(id:)
-        <<~GQL
-          mutation {
-            destroyTour( input: {
-              id: #{id}
-            }) {
-              id
-              name
-              startDate
-              endDate
-              organization {
+        def g_query(id:)
+          <<~GQL
+            mutation {
+              destroyTour( input: {
+                id: #{id}
+              }) {
                 id
+                name
+                startDate
+                endDate
+                organization {
+                  id
+                }
               }
             }
-          }
-        GQL
+          GQL
+        end
+      end
+
+      describe 'sad path' do
+        it 'returns with errors' do
+          user = create(:user)
+          organization = create(:organization, user_id: user.id)
+          tour = create(:tour, organization_id: organization.id)
+
+          post '/graphql', params: { query: g_query(id: organization.id) }
+          json = JSON.parse(response.body, symbolize_names: true)
+          expect(json).to have_key(:errors)
+        end
+
+        def g_query(id:)
+          <<~GQL
+            mutation {
+              destroyOrganization( input: {
+                id: 'not an id'
+              }) {
+                id
+                user {
+                  id
+                }
+              }
+            }
+          GQL
+        end
       end
     end
   end

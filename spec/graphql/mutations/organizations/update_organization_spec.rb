@@ -2,39 +2,43 @@ require 'rails_helper'
 
 module Mutations
   module Organizations
-    RSpec.describe DestroyOrganization, type: :request do
+    RSpec.describe UpdateOrganization, type: :request do
       describe 'resolve' do
-        it 'removes an organization' do
+        it 'updates an organization' do
           user = create(:user)
-          organization = create(:organization, user_id: user.id)
+          organization = create(:organization)
 
-          expect do
-            post '/graphql', params: { query: g_query(id: organization.id) }
-          end.to change { Organization.count }.by(-1)
+          post '/graphql', params: { query: g_query(id: organization.id, user_id: user.id) }
+
+          expect(organization.reload).to have_attributes(
+            name: "Rob",
+            user_id: user.id
+          )
         end
 
         it 'returns an organization' do
           user = create(:user)
-          organization = create(:organization, user_id: user.id)
+          organization = create(:organization)
 
-          post '/graphql', params: { query: g_query(id: organization.id) }
+          post '/graphql', params: { query: g_query(id: organization.id, user_id: user.id) }
           json = JSON.parse(response.body, symbolize_names: true)
-          data = json[:data][:destroyOrganization]
+          data = json[:data][:updateOrganization]
 
           expect(data).to include(
-            id: "#{organization.id}",
-            name: "#{organization.name}",
-            user: { "id": organization.user.id.to_s }
+            id: "#{ organization.reload.id }",
+            name: "#{ organization.name }",
+            user: { "id": user.id.to_s }
           )
         end
 
-
-        def g_query(id:)
+        def g_query(id:, user_id:)
           <<~GQL
             mutation {
-              destroyOrganization( input: {
+              updateOrganization(input: {
                 id: #{id}
-              }) {
+                name: "Rob"
+                userId: #{user_id}
+              }){
                 id
                 name
                 user {
@@ -59,7 +63,7 @@ module Mutations
         def g_query(id:)
           <<~GQL
             mutation {
-              destroyOrganization( input: {
+              updateOrganization( input: {
                 id: 'not an id'
               }) {
                 id

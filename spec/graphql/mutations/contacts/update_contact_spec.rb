@@ -79,7 +79,7 @@ module Mutations
         def g_query(id:)
           <<~GQL
             mutation {
-              destroyContact( input: {
+              updateContact( input: {
                 id: 'not an id'
               }) {
                 id
