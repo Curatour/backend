@@ -98,6 +98,8 @@ note: String
 
 ## Queries
 
+***
+
 ### Find event by ID
 
 `event(id: ID!): [Event!]!`
@@ -114,6 +116,7 @@ note: String
   }  
 }
 ```
+***
 
 ### Find all events
 
@@ -132,53 +135,79 @@ note: String
 }
 ```
 
+***
+
 ### Find organization by ID
 
 `organization(id: ID!): [Organization!]!`
+
+***
 
 ### Find all organizations
 
 `organizations: [Organization!]!`
 
+***
+
 ### Find tour by ID
 
 `tour(id: ID!): [Tour!]!`
+
+***
 
 ### Find all tours
 
 `tours: [Tour!]!`
 
+***
+
 ### Find user by ID
 
 `user(id: ID!): [User!]!`
+
+***
 
 ### Find all users
 
 `users: [User!]!`
 
+***
+
 ### Find venue by ID
 
 `venue(id: ID!): [Venue!]!`
+
+***
 
 ### Find venue by name
 
 `venueByName(name: String!): [Venue!]!`
 
+***
+
 ### Find all venues
 
 `venues: [Venue!]!`
+
+***
 
 ### Find sub_event by ID
 
 `subEvent(id: ID!): SubEvent!`
 
+***
+
 ### Find sub_event by name
 
 `subEventByName(name: String!): [Venue!]!`
 
+***
+
 ### Find a contact by ID
 
 `contact(id: ID!): Contact!`
+
+***
 
 ### Find all contacts
 
@@ -195,9 +224,12 @@ For example, in `createEvent(input: CreateEventInput!): Event`,
 - `CreateEventInput!` refers to the type defined below
 - `: Event` defines the Type to expect in the response
 
+***
+
 ### Create an organization belonging to a user
 
 `createOrganization(input: CreateOrganizationInput!): Organization`
+
 
 #### CreateOrganizationInput!
 
@@ -206,9 +238,12 @@ name: String!
 userId: Int!
 ```
 
+***
+
 ### Update an organization
 
 `updateOrganization(input: CreateOrganizationInput!): Organization`
+
 
 #### UpdateOrganizationInput!
 
@@ -218,9 +253,12 @@ name: String
 userId: Int
 ```
 
+***
+
 ### Destroy an organization
 
 `destroyOrganization(input: CreateOrganizationInput!): Organization`
+
 
 #### DestroyOrganizationInput!
 
@@ -228,9 +266,12 @@ userId: Int
 id: Int!
 ```
 
+***
+
 ### Create a tour belonging to an organization
 
 `createTour(input: CreateTourInput!): Tour`
+
 
 #### CreateTourInput!
 
@@ -241,9 +282,12 @@ startDate: ISO8601Date!
 endDate: ISO8601Date!
 ```
 
+***
+
 ### Update a tour
 
 `updateTour(input: UpdateTourInput!): Tour`
+
 
 #### UpdateTourInput!
 
@@ -255,9 +299,12 @@ startDate: ISO8601Date
 endDate: ISO8601Date
 ```
 
+***
+
 ### Destroy a tour
 
 `destroyTour(input: DestroyTourInput!): Tour`
+
 
 #### DestroyTourInput!
 
@@ -265,9 +312,12 @@ endDate: ISO8601Date
 id: Int!
 ```
 
+***
+
 ### Create an event belonging to a tour
 
 `createEvent(input: CreateEventInput!): Event`
+
 
 #### CreateEventInput!
 
@@ -342,9 +392,12 @@ mutation createEvent($input: CreateEventInput!) {
 
 </details></br>
 
+***
+
 ### Update an event
 
 `updateEvent(input: UpdateEventInput!): Event`
+
 
 #### UpdateEventInput!
 
@@ -357,6 +410,8 @@ startTime: ISO8601Date
 endTime: ISO8601Date
 ```
 
+***
+
 ### Destroy an event
 
 `destroyEvent(input: DestroyEventInput!): Event`
@@ -366,6 +421,8 @@ endTime: ISO8601Date
 ```ruby
 id: Int!
 ```
+
+***
 
 ### Create a subEvent belonging to an event
 
@@ -405,6 +462,8 @@ Query vars
   }
 }
 ```
+
+***
 
 ### Update a subEvent
 
@@ -446,6 +505,8 @@ Query vars
 }
 ```
 
+***
+
 ### Destroy a subEvent
 
 `destroySubEvent(input: DestroySubEventInput!): SubEvent`
@@ -455,6 +516,8 @@ Query vars
 ```ruby
 id: Int!
 ```
+
+***
 
 ### Create a contact belonging to a user
 
@@ -488,6 +551,8 @@ mutation {
   }
 }
 ```
+
+***
 
 ### Update a contact
 
@@ -524,6 +589,8 @@ mutation {
 }
 ```
 
+***
+
 ### Destroy a contact
 
 `destroyContact(input: DestroyContactInput!): Contact`
@@ -545,6 +612,8 @@ mutation {
   }
 }
 ```
+
+***
 
 ### Create a Venue
 
@@ -591,6 +660,8 @@ Query variables:
 }
 ```
 
+***
+
 ### Update a Venue
 
 `updateVenue(input: UpdateVenueInput!): Venue`
@@ -627,6 +698,8 @@ Query variables:
   }
 }
 ```
+
+***
 
 ### Destroy a Venue
 
@@ -743,7 +816,7 @@ For example, a Tour has many Events, and each Event belongs to a Venue. So the b
 
 </details></br>
 
-To take it one step further...
+To take it a few nodes further...
 
 - Query `user(id: 1)`
   - query the user's `contacts {...}`
