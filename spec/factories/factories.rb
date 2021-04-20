@@ -2,7 +2,7 @@ FactoryBot.define do
   factory :user do
     first_name { Faker::Name.first_name }
     last_name { Faker::Name.last_name }
-    phone_number { Faker::PhoneNumber }
+    phone_number { "3333333333" }
     email { Faker::Internet.email }
     role { 1 }
 
@@ -58,7 +58,7 @@ FactoryBot.define do
     phone_number { "555-555-5555" }
     note { Faker::TvShows::MichaelScott.quote }
     sequence(:email) { |n| "contact_#{n}@example.com" }
-    user { User.find(1) }
+    user { User.first }
   end
 
   factory :sub_event do
