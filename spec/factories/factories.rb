@@ -1,4 +1,17 @@
 FactoryBot.define do
+  factory :user do
+    first_name { Faker::Name.first_name }
+    last_name { Faker::Name.last_name }
+    phone_number { Faker::PhoneNumber }
+    email { Faker::Internet.email }
+    role { 1 }
+  end
+
+  factory :organization do
+    name { Faker::Mountain.name }
+    user { User.first }
+  end
+
   factory :venue do
     name { Faker::Mountain.name + " Amphitheater" }
     address { Faker::Address.street_address }
