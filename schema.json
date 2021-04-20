@@ -331,7 +331,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "SCALAR",
-                  "name": "ISO8601Date",
+                  "name": "ISO8601DateTime",
                   "ofType": null
                 }
               },
@@ -347,7 +347,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "SCALAR",
-                  "name": "ISO8601Date",
+                  "name": "ISO8601DateTime",
                   "ofType": null
                 }
               },
@@ -489,7 +489,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "SCALAR",
-                  "name": "ISO8601Date",
+                  "name": "ISO8601DateTime",
                   "ofType": null
                 }
               },
@@ -505,7 +505,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "SCALAR",
-                  "name": "ISO8601Date",
+                  "name": "ISO8601DateTime",
                   "ofType": null
                 }
               },
@@ -2741,7 +2741,7 @@
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "ISO8601Date",
+                "name": "ISO8601DateTime",
                 "ofType": null
               },
               "defaultValue": null,
@@ -2753,7 +2753,7 @@
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "ISO8601Date",
+                "name": "ISO8601DateTime",
                 "ofType": null
               },
               "defaultValue": null,
@@ -2903,7 +2903,7 @@
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "ISO8601Date",
+                "name": "ISO8601DateTime",
                 "ofType": null
               },
               "defaultValue": null,
@@ -2915,7 +2915,7 @@
               "description": null,
               "type": {
                 "kind": "SCALAR",
-                "name": "ISO8601Date",
+                "name": "ISO8601DateTime",
                 "ofType": null
               },
               "defaultValue": null,

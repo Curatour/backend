@@ -4,8 +4,8 @@ module Mutations
       argument :tour_id, Integer, required: true
       argument :name, String, required: true
       argument :venue_id, Integer, required: true
-      argument :start_time, GraphQL::Types::ISO8601Date, required: true
-      argument :end_time, GraphQL::Types::ISO8601Date, required: true
+      argument :start_time, GraphQL::Types::ISO8601DateTime, required: true
+      argument :end_time, GraphQL::Types::ISO8601DateTime, required: true
 
       type Types::EventType
 

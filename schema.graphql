@@ -32,9 +32,9 @@ input CreateEventInput {
   A unique identifier for the client performing the mutation.
   """
   clientMutationId: String
-  endTime: ISO8601Date!
+  endTime: ISO8601DateTime!
   name: String!
-  startTime: ISO8601Date!
+  startTime: ISO8601DateTime!
   tourId: Int!
   venueId: Int!
 }
@@ -60,10 +60,10 @@ input CreateSubEventInput {
   """
   clientMutationId: String
   description: String!
-  endTime: ISO8601Date!
+  endTime: ISO8601DateTime!
   eventId: Int!
   name: String!
-  startTime: ISO8601Date!
+  startTime: ISO8601DateTime!
 }
 
 """
@@ -498,10 +498,10 @@ input UpdateEventInput {
   A unique identifier for the client performing the mutation.
   """
   clientMutationId: String
-  endTime: ISO8601Date
+  endTime: ISO8601DateTime
   id: Int!
   name: String
-  startTime: ISO8601Date
+  startTime: ISO8601DateTime
   tourId: Int
   venueId: Int
 }
@@ -528,11 +528,11 @@ input UpdateSubEventInput {
   """
   clientMutationId: String
   description: String
-  endTime: ISO8601Date
+  endTime: ISO8601DateTime
   eventId: Int
   id: Int!
   name: String
-  startTime: ISO8601Date
+  startTime: ISO8601DateTime
 }
 
 """
