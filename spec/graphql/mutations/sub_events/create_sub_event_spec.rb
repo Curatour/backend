@@ -48,8 +48,8 @@ RSpec.describe Mutations::SubEvents::CreateSubEvent, type: :request do
         expect(gql_response.data[mutation_type]).to eq({
             "name"=>"New subevent",
             "description"=>"We gotta do some stuff",
-            "startTime"=>"2021-08-23T00:00:00Z",
-            "endTime"=>"2021-08-23T00:00:00Z",
+            "startTime"=>"2021-08-24T00:30:00Z",
+            "endTime"=>"2021-08-24T03:30:00Z",
             "event"=>
               {
                 "id"=>event.id.to_s

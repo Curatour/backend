@@ -6,8 +6,8 @@ module Mutations
       argument :name, String, required: false
       argument :description, String, required: false
 
-      argument :start_time, GraphQL::Types::ISO8601Date, required: false
-      argument :end_time, GraphQL::Types::ISO8601Date, required: false
+      argument :start_time, GraphQL::Types::ISO8601DateTime, required: false
+      argument :end_time, GraphQL::Types::ISO8601DateTime, required: false
 
       type Types::SubEventType
 

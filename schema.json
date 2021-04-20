@@ -489,7 +489,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "SCALAR",
-                  "name": "ISO8601Date",
+                  "name": "ISO8601DateTime",
                   "ofType": null
                 }
               },
@@ -505,7 +505,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "SCALAR",
-                  "name": "ISO8601Date",
+                  "name": "ISO8601DateTime",
                   "ofType": null
                 }
               },
