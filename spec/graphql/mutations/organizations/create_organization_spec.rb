@@ -24,7 +24,6 @@ module Mutations
             name: "LAMC",
             user: { "id": user.id.to_s }
           )
-
         end
       end
 
