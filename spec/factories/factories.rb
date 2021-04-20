@@ -1,4 +1,29 @@
 FactoryBot.define do
+  factory :user do
+    first_name { Faker::Name.first_name }
+    last_name { Faker::Name.last_name }
+    phone_number { Faker::PhoneNumber }
+    email { Faker::Internet.email }
+    role { 1 }
+
+    factory :user_with_tour do
+      after(:create) do |user|
+        create(:organization_with_tour, user: user)
+      end
+    end
+  end
+
+  factory :organization do
+    name { Faker::Mountain.name }
+    user { User.first }
+
+    factory :organization_with_tour do
+      after(:create) do |org|
+        create(:tour, organization: org)
+      end
+    end
+  end
+
   factory :venue do
     name { Faker::Mountain.name + " Amphitheater" }
     address { Faker::Address.street_address }
@@ -42,5 +67,12 @@ FactoryBot.define do
     event { Event.order('RANDOM()').first }
     start_time { nil }
     end_time { nil }
+  end
+
+  factory :tour do
+    sequence(:name) { |n| "Tour #{n}" }
+    start_date { Faker::Date.forward(days: 90) }
+    end_date { [90, 120, 150].sample.days.since(start_date) }
+    organization
   end
 end
