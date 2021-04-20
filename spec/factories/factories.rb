@@ -13,13 +13,6 @@ FactoryBot.define do
     end
   end
 
-  factory :tour do
-    name { Faker::Mountain.name }
-    start_date { "2021-03-21" }
-    end_date { "2021-05-02" }
-    organization { Organization.first }
-  end
-
   factory :organization do
     name { Faker::Mountain.name }
     user { User.first }
