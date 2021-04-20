@@ -15,8 +15,8 @@ RSpec.describe Types::QueryType, type: :request do
 
     let(:query_type) { "user" }
     let(:query_string) { <<~GQL
-      {
-        user(id: #{@user.id}) {
+      query user($id: ID!) { 
+        user(id: $id) {
           contacts {
             id
             firstName
@@ -62,7 +62,10 @@ RSpec.describe Types::QueryType, type: :request do
     context 'happy path' do
       
       before do 
-        query query_string
+        query query_string,
+        variables: {
+          id: @user.id
+        }
       end
 
       it 'should return no errors' do
