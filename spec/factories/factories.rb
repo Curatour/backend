@@ -65,8 +65,8 @@ FactoryBot.define do
     name { "Find the " + Faker::Music.instrument }
     description { Faker::Marketing.buzzwords }
     event { Event.order('RANDOM()').first }
-    start_time { nil }
-    end_time { nil }
+    start_time { Faker::Time.forward(days: 90,  period: :evening).beginning_of_hour }
+    end_time { [1,2,3,4].sample.hours.since(start_time).beginning_of_hour }
   end
 
   factory :tour do
