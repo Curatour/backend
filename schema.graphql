@@ -527,6 +527,7 @@ input UpdateSubEventInput {
   A unique identifier for the client performing the mutation.
   """
   clientMutationId: String
+  completed: Boolean
   description: String
   endTime: ISO8601DateTime
   eventId: Int
