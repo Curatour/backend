@@ -120,20 +120,12 @@ module Types
       Venue.find(id)
     end
 
-    def venueByName(name:)
-      Venue.where('name ILIKE ?', "%#{name}%")
-    end
-
     def subEvents
       SubEvent.all
     end
 
     def subEvent(id:)
       SubEvent.find(id)
-    end
-
-    def subEventByName(name:)
-      SubEvent.where('name ILIKE ?', "%#{name}%")
     end
 
     def contacts
