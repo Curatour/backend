@@ -7,7 +7,7 @@ class BackendSchema < GraphQL::Schema
   def self.resolve_type(abstract_type, obj, ctx)
     # TODO: Implement this function
     # to return the correct object type for `obj`
-    raise(GraphQL::RequiredImplementationMissingError)
+    # raise(GraphQL::RequiredImplementationMissingError)
   end
 
   # Relay-style Object Identification:
