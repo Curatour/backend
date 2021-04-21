@@ -26,12 +26,10 @@ module Mutations
           post '/graphql', params: { query: g_query(id: event.id) }
           json = JSON.parse(response.body, symbolize_names: true)
           data = json[:data][:destroyEvent]
-          
+
           expect(data).to include(
             id: "#{event.id}",
             name: "#{event.name}",
-            # startTime: "#{event.start_time}",
-            # endTime: "#{event.end_time}",
             tour: { "id": event.tour.id.to_s }
           )
         end
@@ -44,8 +42,6 @@ module Mutations
               }) {
                 id
                 name
-                startTime
-                endTime
                 tour {
                   id
                 }
