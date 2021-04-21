@@ -1,7 +1,7 @@
 module Mutations
   module Tours
     class DestroyTour < ::Mutations::BaseMutation
-      argument :id, Integer, required: true
+      argument :id, ID, required: true
 
       type Types::TourType
 

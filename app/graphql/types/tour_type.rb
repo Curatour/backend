@@ -8,7 +8,7 @@ module Types
     field :start_date, GraphQL::Types::ISO8601Date, null: false
     field :end_date, GraphQL::Types::ISO8601Date, null: false
 
-    def tour
+    def organization
       Loaders::BelongsToLoader.for(Organization).load(object.organization_id)
     end
 

@@ -1,7 +1,7 @@
 module Mutations
   module Contacts
     class DestroyContact < ::Mutations::BaseMutation
-      argument :id, Integer, required: true
+      argument :id, ID, required: true
 
       type Types::ContactType
 
