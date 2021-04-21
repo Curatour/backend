@@ -56,7 +56,7 @@ RSpec.describe Types::QueryType, type: :request do
       end
     end
 
-    context 'Get All Organizations' do
+    context 'Get Organization' do
       before do
         organization
         query query_string_one,
