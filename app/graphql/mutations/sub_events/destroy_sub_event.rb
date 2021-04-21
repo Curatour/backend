@@ -1,7 +1,7 @@
 module Mutations
   module SubEvents
     class DestroySubEvent < ::Mutations::BaseMutation
-      argument :id, Integer, required: true
+      argument :id, ID, required: true
 
       type Types::SubEventType
 
