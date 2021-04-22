@@ -1,3 +1,5 @@
+[![Build Status](https://www.travis-ci.com/Curatour/backend.svg?branch=main)](https://www.travis-ci.com/Curatour/backend)
+
 <img src="https://user-images.githubusercontent.com/69478485/115476368-f5a61700-a1fe-11eb-8d4a-8d5f7bdfd102.png" alt="CuraTour Logo" width="350" />
 
 CuraTour is an organizational scheduling app designed for Tour Managers of traveling entertainers. It is designed to work across device types and sizes for ease of use throughout a busy day, and includes functionality while in offline modes. Each user belongs to an organization, every organization can manage multiple tours. Within each tour, events are scheduled. These events may be concerts, press events, interviews, travel days, anything relevant for the tour. Each event can have an agenda for the day - a schedule for various parts of the day (load-in, sound check, doors-open, meet and greet, etc). Users can also manage pertinent contacts through the app, and use the app to connect directly to their contacts. CuraTour is here to make your life easier, and to help the show go on.
@@ -9,6 +11,18 @@ CuraTour is an organizational scheduling app designed for Tour Managers of trave
 Curatour's backend API is built with [GraphQL Ruby](https://graphql-ruby.org/).
 
 If you're new to GraphQL, a good starting point is the GraphQL Intro at [graphql.org](https://graphql.org/learn/). Once you have a basic understanding of GraphQL query and mutation syntax, using Curatour's GraphQL interface outlined below will be straightforward!
+
+### Install & Run
+
+Curatour Backend uses `Ruby 2.5` and `Rails 5.2`. You'll need these versions installed locally to run the app.
+
+1. Clone this repository to a local directory
+2. From the command line, install gems and set up the DB:
+    - `bundle`
+    - `rails db:{create,migrate,seed}`
+3. Run the test suite with `bundle exec rspec`
+4. Run the development server with `rails server`
+5. Navigate to `localhost:3000/graphiql` to access to GraphQL Playground
 
 ## Data Model and ERD
 
@@ -879,3 +893,19 @@ To take it a few nodes further...
 ```
 
 </details>
+
+## Additional Thanks
+CuraTour was developed with the help of our frontend team [Kristen Bair](https://github.com/kristenmb), [Drew Bradley](https://github.com/DrewBradley), [Kevin Hartmann](https://github.com/kevinhartmann23), and [Richard Tyler](https://github.com/richardltyler). Their repository and documentation can be found [here](https://github.com/Curatour/frontend).
+
+## Contributors
+
+<table>
+    <tr>
+        <td> Phil McCarthy <a href="https://github.com/philmccarthy">GH</td>
+        <td> Robert Heath <a href="https://github.com/kaiheiongaku">GH</td>
+    </tr>
+ <td><img src="https://avatars.githubusercontent.com/u/9437806?v=4" alt="Phil McCarthy"
+ width="150" height="auto" /></td>
+ <td><img src="https://avatars.githubusercontent.com/u/68252946?v=4" alt="Robert Heath"
+ width="150" height="auto" /></td>
+</table>
