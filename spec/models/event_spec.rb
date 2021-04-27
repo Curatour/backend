@@ -28,7 +28,7 @@ describe Event do
             start_time: "2021-04-20T20:44:46Z",
             end_time: '2021-04-20T20:00:00Z'
         )
-      end.to raise_error
+      end.to raise_error ActiveRecord::RecordInvalid
     end
   end
 end
