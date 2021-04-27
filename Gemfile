@@ -33,6 +33,7 @@ gem 'graphql'
 gem 'factory_bot_rails'
 gem 'faker'
 gem 'graphql-batch'
+gem 'validates_timeliness', '~> 5.0.0.beta1'
 
 group :development, :test do
   gem 'pry'
