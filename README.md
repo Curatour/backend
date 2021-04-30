@@ -130,6 +130,10 @@ For example, when attempting to add or update a record with an invalid datetime,
     {
       "message": "Validation failed: End time must be after 2021-08-23 18:30:00",
       "backtrace": [ ... ]
+    }
+  ]
+}
+    
 ```
 
 ## Queries
