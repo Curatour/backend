@@ -29,7 +29,7 @@ module Mutations
             id: "#{Event.first.id}",
             name: "Lagrime New Zealand",
             startTime: "2021-04-20T20:44:46Z",
-            endTime: "2021-04-20T20:44:46Z",
+            endTime: "2021-04-20T22:45:00Z",
             tour: { "id": tour.id.to_s },
             venue: { "id": venue.id.to_s }
           )
@@ -41,7 +41,7 @@ module Mutations
               createEvent( input: {
                 name: "Lagrime New Zealand"
                 startTime: "2021-04-20T20:44:46Z"
-                endTime: "2021-04-20T20:44:46Z"
+                endTime: "2021-04-20T22:45:00Z"
                 tourId: #{tour_id}
                 venueId: #{venue_id}
               } ){

@@ -2,7 +2,11 @@
 
 <img src="https://user-images.githubusercontent.com/69478485/115476368-f5a61700-a1fe-11eb-8d4a-8d5f7bdfd102.png" alt="CuraTour Logo" width="350" />
 
-CuraTour is an organizational scheduling app designed for Tour Managers of traveling entertainers. It is designed to work across device types and sizes for ease of use throughout a busy day, and includes functionality while in offline modes. Each user belongs to an organization, every organization can manage multiple tours. Within each tour, events are scheduled. These events may be concerts, press events, interviews, travel days, anything relevant for the tour. Each event can have an agenda for the day - a schedule for various parts of the day (load-in, sound check, doors-open, meet and greet, etc). Users can also manage pertinent contacts through the app, and use the app to connect directly to their contacts. CuraTour is here to make your life easier, and to help the show go on.
+CuraTour is an organizational scheduling app for Tour Managers of traveling entertainers. It is designed to work across device types and sizes for ease of use throughout a busy day, and includes functionality while in offline modes.
+
+Each user belongs to an organization, every organization can manage multiple tours. Within each tour, events are scheduled. These events may be concerts, press events, interviews, travel days, anything relevant for the tour. Each event can have an agenda for the day - a schedule for various parts of the day (load-in, sound check, doors-open, meet and greet, etc). Users can also manage pertinent contacts through the app, and use the app to connect directly to their contacts.
+
+CuraTour is here to make your life easier, and to help the show go on.
 
 # Curatour Backend — GraphQL API
 
@@ -114,7 +118,27 @@ phoneNumber: String!
 note: String
 ```
 
+## Error Handling
+
+When a GraphQL request fails, errors will be returned as a top level property in the GraphQL response.
+
+For example, when attempting to add or update a record with an invalid datetime, the API will respond with:
+
+```json
+{
+  "errors": [
+    {
+      "message": "Validation failed: End time must be after 2021-08-23 18:30:00",
+      "backtrace": [ ... ]
+    }
+  ]
+}
+    
+```
+
 ## Queries
+
+Below are available query endpoints. Per the above Types, queries can be nested to return relational data. See [Nested Query Examples](#nested-query-examples).
 
 ***
 
@@ -239,8 +263,8 @@ The Input Types below describes input requirements.
 
 For example, in `createEvent(input: CreateEventInput!): Event`, 
 
-- `CreateEventInput!` refers to the type defined below
-- `: Event` defines the Type to expect in the response
+- `CreateEventInput!` refers to the Input Type defined below
+- `: Event` defines the Query Type of the response
 
 ***
 
