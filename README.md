@@ -268,6 +268,20 @@ For example, in `createEvent(input: CreateEventInput!): Event`,
 
 ***
 
+### Create a user
+
+`createUser(input: CreateUserInput!): User`
+
+#### CreateUserInput!
+
+```ruby
+firstName: String!
+lastName: String!
+phoneNumber: String!
+email: String!
+role: Int!
+```
+
 ### Create an organization belonging to a user
 
 `createOrganization(input: CreateOrganizationInput!): Organization`
