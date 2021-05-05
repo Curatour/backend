@@ -1,13 +1,14 @@
 require 'rails_helper'
 include GraphQL::TestHelpers
 
-RSpec.describe Mutations::Users::CreateUser, type: :request do
+RSpec.describe Mutations::Users::UpdateUser, type: :request do
   describe 'Creating a User' do
 
-    let(:mutation_type) { "createUser" }
+    let(:user) { create(:user) }
+    let(:mutation_type) { "updateUser" }
     let(:mutation_string) { <<~GQL
-      mutation createUser($input: CreateUserInput!) {
-        createUser(input: $input) {
+      mutation updateUser($input: UpdateUserInput!) {
+        updateUser(input: $input) {
           id
           firstName
           lastName
@@ -25,11 +26,12 @@ RSpec.describe Mutations::Users::CreateUser, type: :request do
         mutation mutation_string,
           variables: {
             input: {
-              firstName: "New",
+              id: user.id,
+              firstName: "Updated",
               lastName: "User",
-              email: "new_user@example.com",
-              phoneNumber: "555-555-5555",
-              role: 0
+              email: "updated@example.com",
+              phoneNumber: "000-555-5555",
+              role: 1
             }
           }
       end
@@ -41,12 +43,12 @@ RSpec.describe Mutations::Users::CreateUser, type: :request do
 
       it 'should return the User object' do
         expect(gql_response.data[mutation_type]).to eq({
-          "id"=>User.last.id.to_s,
-          "email"=>"new_user@example.com",
-          "firstName"=>"New",
+          "id"=>user.id.to_s,
+          "email"=>"updated@example.com",
+          "firstName"=>"Updated",
           "lastName"=>"User",
-          "phoneNumber"=>"555-555-5555",
-          "role"=>"admin"
+          "phoneNumber"=>"000-555-5555",
+          "role"=>"member"
         })
       end
     end

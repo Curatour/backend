@@ -1,5 +1,13 @@
 module Types
   class MutationType < Types::BaseObject
+    field :create_user, mutation: Mutations::Users::CreateUser do
+      description 'Create a user'
+    end
+
+    field :update_user, mutation: Mutations::Users::UpdateUser do
+      description 'Update a user'
+    end
+
     field :create_organization, mutation: Mutations::Organizations::CreateOrganization do
       description 'Create an organization belonging to a user'
     end
