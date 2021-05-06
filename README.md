@@ -38,7 +38,9 @@ This entity relationship diagram (ERD) shows the setup of the PostgreSQL databas
 
 Each GraphQL Type represents the models and their respective attributes available for querying and mutating.
 
-All GraphQL requests are sent via `POST` HTTP request to the `https://curatour-be.herokuapp.com/graphql` endpoint. 
+All GraphQL requests are sent via `POST` HTTP request to the following URL:
+
+`https://curatour-be.herokuapp.com/graphql`
 
 The following Types and their respective fields are available for querying:
 
