@@ -16,6 +16,11 @@ module Types
       argument :id, ID, required: true
     end
 
+    field :user_by_email, Types::UserType, null: false do
+      description 'Find user by email'
+      argument :email, String, required: true
+    end
+
     field :organizations, [Types::OrganizationType], null: false do
       description 'Find all organizations'
     end
@@ -52,23 +57,18 @@ module Types
       argument :id, ID, required: true
     end
 
-    field :venueByName, [Types::VenueType], null: false do
+    field :venue_by_name, [Types::VenueType], null: false do
       description 'Find venue by name'
       argument :name, String, required: true
     end
 
-    field :subEvents, [Types::SubEventType], null: false do
+    field :sub_events, [Types::SubEventType], null: false do
       description 'Find all sub_events'
     end
 
-    field :subEvent, Types::SubEventType, null: false do
+    field :sub_event, Types::SubEventType, null: false do
       description 'Find sub_event by ID'
       argument :id, ID, required: true
-    end
-
-    field :subEventByName, [Types::SubEventType], null: false do
-      description 'Find sub_event by name'
-      argument :name, String, required: true
     end
 
     field :contacts, [Types::ContactType], null: false do
@@ -86,6 +86,10 @@ module Types
 
     def user(id:)
       User.find(id)
+    end
+
+    def user_by_email(email:)
+      User.find_by(email: email)
     end
 
     def organizations
@@ -120,11 +124,11 @@ module Types
       Venue.find(id)
     end
 
-    def subEvents
+    def sub_events
       SubEvent.all
     end
 
-    def subEvent(id:)
+    def sub_event(id:)
       SubEvent.find(id)
     end
 
