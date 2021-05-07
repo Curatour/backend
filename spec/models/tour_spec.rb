@@ -22,7 +22,7 @@ describe Tour do
             start_date: "2021-04-20",
             end_date: '2021-04-20'
         )
-      end.to_not raise_error ActiveRecord::RecordInvalid
+      end.to_not raise_error
     end
     
     it 'is invalid when end_date is before start_date' do
