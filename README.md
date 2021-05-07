@@ -183,7 +183,7 @@ Below are available query endpoints. Per the above Types, queries can be nested 
 
 ### Find organization by ID
 
-`organization(id: ID!): [Organization!]!`
+`organization(id: ID!): Organization!`
 
 ***
 
@@ -195,7 +195,7 @@ Below are available query endpoints. Per the above Types, queries can be nested 
 
 ### Find tour by ID
 
-`tour(id: ID!): [Tour!]!`
+`tour(id: ID!): Tour!`
 
 ***
 
@@ -207,7 +207,13 @@ Below are available query endpoints. Per the above Types, queries can be nested 
 
 ### Find user by ID
 
-`user(id: ID!): [User!]!`
+`user(id: ID!): User!`
+
+***
+
+### Find user by email
+
+`user(email: String!): User!`
 
 ***
 
@@ -219,13 +225,13 @@ Below are available query endpoints. Per the above Types, queries can be nested 
 
 ### Find venue by ID
 
-`venue(id: ID!): [Venue!]!`
+`venue(id: ID!): Venue!`
 
 ***
 
 ### Find venue by name
 
-`venueByName(name: String!): [Venue!]!`
+`venueByName(name: String!): Venue!`
 
 ***
 
@@ -238,12 +244,6 @@ Below are available query endpoints. Per the above Types, queries can be nested 
 ### Find sub_event by ID
 
 `subEvent(id: ID!): SubEvent!`
-
-***
-
-### Find sub_event by name
-
-`subEventByName(name: String!): [Venue!]!`
 
 ***
 

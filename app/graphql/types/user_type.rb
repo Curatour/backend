@@ -3,7 +3,7 @@ module Types
     field :organizations, [Types::OrganizationType], null: true
     field :contacts, [Types::ContactType], null: true
 
-    field :id, ID, null: false
+    field :id, ID, null: true
 
     field :first_name, String, null: false
     field :last_name, String, null: false
