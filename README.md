@@ -213,7 +213,22 @@ Below are available query endpoints. Per the above Types, queries can be nested 
 
 ### Find user by email
 
-`user(email: String!): User!`
+`userByEmail(email: String!): User!`
+
+GQL Example:
+
+```graphql
+query userByEmail($email: String!) { 
+  userByEmail(email: $email) {
+    id
+    firstName
+    lastName
+    email
+    phoneNumber
+    role
+  }
+}
+```
 
 ***
 
